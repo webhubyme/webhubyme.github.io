@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Book Appointment | Alwan Alward Ladies Salon</title>
+
+<link rel="stylesheet" href="style.css">
+```
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     DEMO BAR
+===================================================== -->
+
+<div class="demo-bar">
+
+```
+✦ WEBSITE DEMO • ALWAN ALWARD LADIES SALON ✦
+```
+
+</div>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header">
+
+```
+<div class="header-container">
+
+
+    <!-- BRAND -->
+
+    <div class="brand">
+
+        <div class="brand-logo">
+
+            <img
+                src="images/alwan-alward-logo.png.png"
+                alt="Alwan Alward Ladies Salon Logo"
+            >
+
+        </div>
+
+
+        <div class="brand-text">
+
+            <h1>
+                ALWAN ALWARD
+            </h1>
+
+            <span>
+                LADIES SALON
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="main-nav">
+
+        <a href="index.html">
+            HOME
+        </a>
+
+        <a href="about.html">
+            ABOUT US
+        </a>
+
+        <a href="services.html">
+            SERVICES
+        </a>
+
+        <a href="gallery.html">
+            GALLERY
+        </a>
+
+        <a href="contact.html">
+            CONTACT US
+        </a>
+
+        <a
+            href="booking.html"
+            class="nav-book active"
+        >
+            ▣ BOOK APPOINTMENT
+            <b>→</b>
+        </a>
+
+    </nav>
+
+</div>
+```
+
+</header>
+
+<!-- =====================================================
+     BOOKING HERO
+===================================================== -->
+
+<section class="booking-hero">
+
+```
+<div class="booking-hero-content">
+
+    <p>
+        Your Beauty Moment Awaits
+    </p>
+
+    <h2>
+        Book Your Appointment
+    </h2>
+
+    <div class="booking-title-line">
+
+        <span></span>
+
+        ✦
+
+        <span></span>
+
+    </div>
+
+    <p class="booking-hero-text">
+
+        Choose your preferred service, date and time.
+        We look forward to welcoming you.
+
+    </p>
+
+</div>
+```
+
+</section>
+
+<!-- =====================================================
+     BOOKING SECTION
+===================================================== -->
+
+<section class="booking-section">
+
+```
+<div class="booking-container">
+
+
+    <!-- =================================================
+         LEFT INFORMATION
+    ================================================== -->
+
+    <div class="booking-info">
+
+        <p class="booking-label">
+            ALWAN ALWARD LADIES SALON
+        </p>
+
+
+        <h2>
+
+            Let's Make Your
+
+            <span>
+                Beauty Moment
+            </span>
+
+            Special
+
+        </h2>
+
+
+        <p class="booking-description">
+
+            Treat yourself to a relaxing beauty experience
+            designed especially for you.
+            Select your service and preferred appointment
+            time, and our team will take care of the rest.
+
+        </p>
+
+
+        <!-- INFO ITEMS -->
+
+        <div class="booking-info-items">
+
+
+            <div class="booking-info-item">
+
+                <div class="booking-info-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <h3>
+                        Professional Care
+                    </h3>
+
+                    <p>
+                        Relax and enjoy our beauty services.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="booking-info-item">
+
+                <div class="booking-info-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <h3>
+                        Flexible Appointments
+                    </h3>
+
+                    <p>
+                        Choose a date and time that suits you.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="booking-info-item">
+
+                <div class="booking-info-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <h3>
+                        Ladies Only
+                    </h3>
+
+                    <p>
+                        A comfortable and relaxing environment.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         BOOKING FORM
+    ================================================== -->
+
+    <div class="booking-card">
+
+
+        <div class="booking-card-heading">
+
+            <p>
+                APPOINTMENT REQUEST
+            </p>
+
+            <h2>
+                Book Now
+            </h2>
+
+            <span></span>
+
+        </div>
+
+
+        <form id="bookingForm">
+
+
+            <!-- NAME -->
+
+            <div class="booking-field">
+
+                <label for="customerName">
+                    Your Name
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    name="customerName"
+                    placeholder="Enter your name"
+                    autocomplete="name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- PHONE -->
+
+            <div class="booking-field">
+
+                <label for="phone">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+971 50 123 4567"
+                    maxlength="25"
+                    inputmode="tel"
+                    autocomplete="tel"
+                    required
+                >
+
+                <small
+                    id="phoneError"
+                    class="phone-error"
+                ></small>
+
+            </div>
+
+
+            <!-- SERVICE -->
+
+            <div class="booking-field">
+
+                <label for="service">
+                    Select Service
+                </label>
+
+                <select
+                    id="service"
+                    name="service"
+                    required
+                >
+
+                    <option value="">
+                        Choose a service
+                    </option>
+
+                    <option value="Hair Services">
+                        Hair Services
+                    </option>
+
+                    <option value="Hair Styling">
+                        Hair Styling
+                    </option>
+
+                    <option value="Hair Coloring">
+                        Hair Coloring
+                    </option>
+
+                    <option value="Facial">
+                        Facial
+                    </option>
+
+                    <option value="Makeup">
+                        Makeup
+                    </option>
+
+                    <option value="Manicure & Pedicure">
+                        Manicure & Pedicure
+                    </option>
+
+                    <option value="Nail Services">
+                        Nail Services
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- DATE + TIME -->
+
+            <div class="booking-row">
+
+
+                <!-- DATE -->
+
+                <div class="booking-field">
+
+                    <label for="date">
+                        Appointment Date
+                    </label>
+
+                    <input
+                        type="text"
+                        id="date"
+                        name="date"
+                        placeholder="DD/MM/YYYY"
+                        maxlength="10"
+                        inputmode="numeric"
+                        autocomplete="off"
+                        required
+                    >
+
+                    <small
+                        id="dateError"
+                        class="phone-error"
+                    ></small>
+
+                </div>
+
+
+                <!-- TIME -->
+
+                <div class="booking-field">
+
+                    <label for="time">
+                        Preferred Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="time"
+                        name="time"
+                        min="10:00"
+                        max="22:00"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- NOTE -->
+
+            <div class="booking-field">
+
+                <label for="note">
+
+                    Additional Note
+
+                    <span>
+                        (Optional)
+                    </span>
+
+                </label>
+
+                <textarea
+                    id="note"
+                    name="note"
+                    rows="4"
+                    placeholder="Anything you would like us to know?"
+                ></textarea>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="submit"
+                class="booking-submit"
+                id="submitButton"
+            >
+
+                ✦ Request Appointment
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+
+            <p class="booking-small-text">
+
+                Your appointment request will be reviewed
+                by our salon team.
+
+            </p>
+
+        </form>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =====================================================
+     BOTTOM CONTACT
+===================================================== -->
+
+<section class="booking-bottom">
+
+```
+<div>
+
+    <p>
+        NEED HELP?
+    </p>
+
+    <h2>
+        Prefer to talk to us?
+    </h2>
+
+    <p class="booking-bottom-text">
+
+        Contact us directly and our team will be happy
+        to assist you with your appointment.
+
+    </p>
+
+
+    <div class="booking-bottom-buttons">
+
+
+        <!-- CALL -->
+
+        <a
+            href="tel:+971559984525"
+            class="gold-button"
+        >
+
+            📞 Call Us
+
+        </a>
+
+
+        <!-- WHATSAPP -->
+
+        <a
+            href="https://wa.me/971559984525"
+            target="_blank"
+            rel="noopener"
+            class="outline-button"
+        >
+
+            💬 WhatsApp Us
+
+        </a>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="simple-footer">
+
+```
+<div class="simple-footer-brand">
+
+    <img
+        src="images/alwan-alward-logo.png.png"
+        alt="Alwan Alward Logo"
+    >
+
+    <div>
+
+        <strong>
+            ALWAN ALWARD
+        </strong>
+
+        <span>
+            LADIES SALON
+        </span>
+
+    </div>
+
+</div>
+
+
+<div class="simple-footer-links">
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="about.html">
+        About
+    </a>
+
+    <a href="services.html">
+        Services
+    </a>
+
+    <a href="gallery.html">
+        Gallery
+    </a>
+
+    <a href="booking.html">
+        Book Appointment
+    </a>
+
+    <a href="contact.html">
+        Contact
+    </a>
+
+</div>
+
+
+<p class="simple-footer-copy">
+
+    © 2026 Alwan Alward Ladies Salon.
+    All rights reserved.
+
+</p>
+```
+
+</footer>
+
+<!-- =====================================================
+     FLOATING WHATSAPP
+===================================================== -->
+
+<a
+href="https://wa.me/971559984525"
+target="_blank"
+rel="noopener"
+class="floating-whatsapp"
+aria-label="WhatsApp"
+
+>
+
+```
+<svg
+    viewBox="0 0 32 32"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+>
+
+    <path
+        fill="#25D366"
+        d="M16 3C8.82 3 3 8.82 3 16c0 2.29.6 4.44 1.74 6.34L3 29l6.83-1.7A12.94 12.94 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3z"
+    />
+
+    <path
+        fill="#fff"
+        d="M22.1 18.7c-.34-.17-2.02-1-2.33-1.11-.31-.12-.54-.17-.77.17-.23.34-.88 1.11-1.08 1.34-.2.23-.4.26-.74.09-.34-.17-1.43-.53-2.72-1.69-1.01-.9-1.69-2-1.89-2.34-.2-.34-.02-.52.15-.69.15-.15.34-.4.51-.6.17-.2.23-.34.34-.57.11-.23.06-.43-.03-.6-.09-.17-.77-1.85-1.06-2.54-.28-.67-.56-.58-.77-.59h-.65c-.23 0-.6.09-.91.43-.31.34-1.2 1.17-1.2 2.85 0 1.68 1.23 3.3 1.4 3.53.17.23 2.42 3.7 5.86 5.19.82.35 1.46.56 1.96.72.82.26 1.56.22 2.15.13.66-.1 2.02-.83 2.3-1.63.28-.8.28-1.48.2-1.63-.08-.14-.31-.23-.65-.4z"
+    />
+
+</svg>
+```
+
+</a>
+
+<!-- =====================================================
+     SUCCESS MODAL
+===================================================== -->
+
+<div
+    id="successModal"
+    class="success-modal"
+>
+
+```
+<div class="success-modal-box">
+
+
+    <!-- CLOSE -->
+
+    <button
+        type="button"
+        class="success-close"
+        onclick="closeSuccessModal()"
+        aria-label="Close"
+    >
+        ×
+    </button>
+
+
+    <!-- ICON -->
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+
+    <h2>
+        Booking Submitted!
+    </h2>
+
+
+    <p>
+
+        Your appointment request has been
+        submitted successfully.
+
+    </p>
+
+
+    <span>
+
+        Please confirm your appointment with us
+        on WhatsApp.
+
+    </span>
+
+
+    <div class="whatsapp-confirm-note">
+
+        <strong>
+            Important
+        </strong>
+
+        <p>
+
+            Send your appointment details to our
+            WhatsApp so our salon team can confirm
+            your booking.
+
+        </p>
+
+
+        <button
+            type="button"
+            class="confirm-whatsapp-button"
+            onclick="confirmBookingOnWhatsApp()"
+        >
+
+            💬 Confirm Booking on WhatsApp
+
+        </button>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<!-- =====================================================
+     SUPABASE + BOOKING JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   SUPABASE CONFIGURATION
+===================================================== */
+
+const supabaseUrl =
+    'https://fzvafnmtxsyftumhwptj.supabase.co';
+
+const supabaseKey =
+    'sb_publishable_YKbRYshLW19oh7LlUKiVSQ_onviKmTs';
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const bookingForm =
+    document.getElementById('bookingForm');
+
+const submitButton =
+    document.getElementById('submitButton');
+
+const dateInput =
+    document.getElementById('date');
+
+const phoneInput =
+    document.getElementById('phone');
+
+const phoneError =
+    document.getElementById('phoneError');
+
+const dateError =
+    document.getElementById('dateError');
+
+
+/* =====================================================
+   LAST BOOKING
+===================================================== */
+
+let lastBookingData = null;
+
+
+/* =====================================================
+   INTERNATIONAL PHONE VALIDATION
+===================================================== */
+
+function validateInternationalPhone(phone) {
+
+    /*
+       Remove spaces, brackets and hyphens
+       so we can count the actual digits.
+    */
+
+    const cleanPhone =
+        phone.replace(/[\s\-()]/g, '');
+
+
+    /*
+       Must contain only:
+       + and numbers
+
+       Example valid numbers:
+
+       +971501234567
+       +1 202 555 0123
+       +44 20 1234 5678
+       +91 98765 43210
+       0501234567
+    */
+
+    if (!/^\+?[0-9]+$/.test(cleanPhone)) {
+
+        return false;
+
+    }
+
+
+    /*
+       International phone numbers normally
+       contain 7 to 15 digits.
+    */
+
+    const digitsOnly =
+        cleanPhone.replace(/\D/g, '');
+
+
+    return (
+        digitsOnly.length >= 7 &&
+        digitsOnly.length <= 15
+    );
+
+}
+
+
+/* =====================================================
+   PHONE ERROR
+===================================================== */
+
+function showPhoneError(message) {
+
+    phoneError.textContent =
+        message;
+
+    phoneError.style.display =
+        'block';
+
+    phoneInput.classList.add(
+        'input-error'
+    );
+
+}
+
+
+/* =====================================================
+   CLEAR PHONE ERROR
+===================================================== */
+
+function clearPhoneError() {
+
+    phoneError.textContent =
+        '';
+
+    phoneError.style.display =
+        'none';
+
+    phoneInput.classList.remove(
+        'input-error'
+    );
+
+}
+
+
+/* =====================================================
+   PHONE INPUT
+===================================================== */
+
+phoneInput.addEventListener(
+    'input',
+    function () {
+
+        /*
+           Allow numbers, +, spaces,
+           brackets and hyphens.
+        */
+
+        this.value =
+            this.value.replace(
+                /[^0-9+\s\-()]/g,
+                ''
+            );
+
+
+        /*
+           Maximum characters.
+        */
+
+        this.value =
+            this.value.substring(
+                0,
+                25
+            );
+
+
+        const phone =
+            this.value.trim();
+
+
+        /*
+           Empty field.
+        */
+
+        if (phone.length === 0) {
+
+            clearPhoneError();
+
+            return;
+
+        }
+
+
+        /*
+           Check the number while typing.
+        */
+
+        if (!validateInternationalPhone(phone)) {
+
+            showPhoneError(
+                'Please enter a valid phone number.'
+            );
+
+        } else {
+
+            clearPhoneError();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   DATE INPUT FORMATTING
+===================================================== */
+
+dateInput.addEventListener(
+    'input',
+    function () {
+
+        let value =
+            this.value.replace(
+                /\D/g,
+                ''
+            );
+
+
+        value =
+            value.substring(
+                0,
+                8
+            );
+
+
+        if (value.length > 2) {
+
+            value =
+                value.substring(0, 2) +
+                '/' +
+                value.substring(2);
+
+        }
+
+
+        if (value.length > 5) {
+
+            value =
+                value.substring(0, 5) +
+                '/' +
+                value.substring(5);
+
+        }
+
+
+        this.value =
+            value;
+
+        dateError.textContent =
+            '';
+
+        dateError.style.display =
+            'none';
+
+    }
+);
+
+
+/* =====================================================
+   DATE VALIDATION
+===================================================== */
+
+function validateDate(date) {
+
+    const datePattern =
+        /^(\d{2})\/(\d{2})\/(\d{4})$/;
+
+    const match =
+        date.match(datePattern);
+
+
+    if (!match) {
+
+        return {
+
+            valid: false,
+
+            message:
+                'Please enter the date in DD/MM/YYYY format.'
+
+        };
+
+    }
+
+
+    const day =
+        parseInt(
+            match[1],
+            10
+        );
+
+
+    const month =
+        parseInt(
+            match[2],
+            10
+        );
+
+
+    const year =
+        parseInt(
+            match[3],
+            10
+        );
+
+
+    const selectedDate =
+        new Date(
+            year,
+            month - 1,
+            day
+        );
+
+
+    /*
+       Check whether the date really exists.
+    */
+
+    if (
+
+        selectedDate.getFullYear() !== year ||
+
+        selectedDate.getMonth() !== month - 1 ||
+
+        selectedDate.getDate() !== day
+
+    ) {
+
+        return {
+
+            valid: false,
+
+            message:
+                'Please enter a valid date.'
+
+        };
+
+    }
+
+
+    /*
+       Do not allow past dates.
+    */
+
+    const today =
+        new Date();
+
+
+    today.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+
+    if (selectedDate < today) {
+
+        return {
+
+            valid: false,
+
+            message:
+                'You cannot select a past date.'
+
+        };
+
+    }
+
+
+    return {
+
+        valid: true,
+
+        day: day,
+
+        month: month,
+
+        year: year
+
+    };
+
+}
+
+
+/* =====================================================
+   FORM SUBMIT
+===================================================== */
+
+bookingForm.addEventListener(
+    'submit',
+    async function (event) {
+
+        event.preventDefault();
+
+
+        /* =================================================
+           GET VALUES
+        ================================================= */
+
+        const name =
+            document
+                .getElementById('customerName')
+                .value
+                .trim();
+
+
+        const phone =
+            phoneInput
+                .value
+                .trim();
+
+
+        const service =
+            document
+                .getElementById('service')
+                .value;
+
+
+        const date =
+            dateInput
+                .value
+                .trim();
+
+
+        const time =
+            document
+                .getElementById('time')
+                .value;
+
+
+        const note =
+            document
+                .getElementById('note')
+                .value
+                .trim();
+
+
+        /* =================================================
+           PHONE CHECK
+        ================================================= */
+
+        if (!validateInternationalPhone(phone)) {
+
+            showPhoneError(
+                'Please enter a valid phone number.'
+            );
+
+            phoneInput.focus();
+
+            return;
+
+        }
+
+
+        clearPhoneError();
+
+
+        /* =================================================
+           DATE CHECK
+        ================================================= */
+
+        const dateResult =
+            validateDate(date);
+
+
+        if (!dateResult.valid) {
+
+            dateError.textContent =
+                dateResult.message;
+
+            dateError.style.display =
+                'block';
+
+            dateInput.focus();
+
+            return;
+
+        }
+
+
+        dateError.textContent =
+            '';
+
+        dateError.style.display =
+            'none';
+
+
+        /* =================================================
+           DATABASE DATE
+        ================================================= */
+
+        const databaseDate =
+            `${dateResult.year}-${String(dateResult.month).padStart(2, '0')}-${String(dateResult.day).padStart(2, '0')}`;
+
+
+        /* =================================================
+           BOOKING DATA
+        ================================================= */
+
+        const bookingData = {
+
+            name: name,
+
+            phone: phone,
+
+            service: service,
+
+            date: databaseDate,
+
+            time: time,
+
+            note: note
+
+        };
+
+
+        lastBookingData =
+            bookingData;
+
+
+        /* =================================================
+           DISABLE BUTTON
+        ================================================= */
+
+        submitButton.disabled =
+            true;
+
+        submitButton.innerHTML =
+            '⏳ Sending Appointment...';
+
+
+        /* =================================================
+           SEND TO SUPABASE
+        ================================================= */
+
+        try {
+
+            const response =
+                await fetch(
+
+                    `${supabaseUrl}/rest/v1/alwan%20alward`,
+
+                    {
+
+                        method: 'POST',
+
+                        headers: {
+
+                            'Content-Type':
+                                'application/json',
+
+                            'apikey':
+                                supabaseKey,
+
+                            'Authorization':
+                                `Bearer ${supabaseKey}`,
+
+                            'Prefer':
+                                'return=minimal'
+
+                        },
+
+                        body:
+                            JSON.stringify(
+                                bookingData
+                            )
+
+                    }
+
+                );
+
+
+            /* =================================================
+               CHECK RESPONSE
+            ================================================= */
+
+            if (!response.ok) {
+
+                const error =
+                    await response.text();
+
+
+                console.error(
+                    'Supabase Error:',
+                    response.status,
+                    error
+                );
+
+
+                alert(
+
+                    '❌ Booking could not be submitted.\n\n' +
+
+                    'Supabase Error ' +
+
+                    response.status +
+
+                    ': ' +
+
+                    error
+
+                );
+
+
+                submitButton.disabled =
+                    false;
+
+
+                submitButton.innerHTML =
+                    '✦ Request Appointment <span>→</span>';
+
+
+                return;
+
+            }
+
+
+            /* =================================================
+               SUCCESS
+            ================================================= */
+
+            document
+                .getElementById('successModal')
+                .classList
+                .add('show');
+
+
+            bookingForm.reset();
+
+
+            clearPhoneError();
+
+
+            submitButton.disabled =
+                false;
+
+
+            submitButton.innerHTML =
+                '✦ Request Appointment <span>→</span>';
+
+        }
+
+
+        /* =================================================
+           CONNECTION ERROR
+        ================================================= */
+
+        catch (error) {
+
+            console.error(
+                'Connection Error:',
+                error
+            );
+
+
+            alert(
+                '❌ Something went wrong. Please try again.'
+            );
+
+
+            submitButton.disabled =
+                false;
+
+
+            submitButton.innerHTML =
+                '✦ Request Appointment <span>→</span>';
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   WHATSAPP CONFIRMATION
+===================================================== */
+
+function confirmBookingOnWhatsApp() {
+
+
+    if (!lastBookingData) {
+
+        alert(
+            'Please submit your appointment first.'
+        );
+
+        return;
+
+    }
+
+
+    const booking =
+        lastBookingData;
+
+
+    /* =================================================
+       FORMAT DATE
+    ================================================= */
+
+    const dateParts =
+        booking.date.split('-');
+
+
+    let formattedDate =
+        booking.date;
+
+
+    if (dateParts.length === 3) {
+
+        formattedDate =
+            `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
+
+    }
+
+
+    /* =================================================
+       FORMAT TIME
+    ================================================= */
+
+    let formattedTime =
+        booking.time || '-';
+
+
+    if (booking.time) {
+
+        const timeParts =
+            booking.time.split(':');
+
+
+        if (timeParts.length >= 2) {
+
+            let hour =
+                parseInt(
+                    timeParts[0],
+                    10
+                );
+
+
+            const minute =
+                timeParts[1];
+
+
+            const ampm =
+                hour >= 12
+                    ? 'PM'
+                    : 'AM';
+
+
+            hour =
+                hour % 12 || 12;
+
+
+            formattedTime =
+                `${hour}:${minute} ${ampm}`;
+
+        }
+
+    }
+
+
+    /* =================================================
+       WHATSAPP MESSAGE
+    ================================================= */
+
+    const message =
+`Hello Alwan Alward Ladies Salon 🌸
+
+I would like to confirm my appointment request.
+
+👤 Name: ${booking.name}
+
+📱 Phone: ${booking.phone}
+
+💇‍♀️ Service: ${booking.service}
+
+📅 Date: ${formattedDate}
+
+⏰ Time: ${formattedTime}
+
+💬 Additional Note: ${booking.note || 'No additional note'}
+
+Please confirm my appointment. Thank you! 💕`;
+
+
+    /* =================================================
+       SALON WHATSAPP NUMBER
+    ================================================= */
+
+    const salonWhatsAppNumber =
+        '971559984525';
+
+
+    /* =================================================
+       WHATSAPP URL
+    ================================================= */
+
+    const whatsappURL =
+        `https://wa.me/${salonWhatsAppNumber}?text=${encodeURIComponent(message)}`;
+
+
+    /* =================================================
+       OPEN WHATSAPP
+    ================================================= */
+
+    window.open(
+        whatsappURL,
+        '_blank'
+    );
+
+}
+
+
+/* =====================================================
+   CLOSE SUCCESS MODAL
+===================================================== */
+
+function closeSuccessModal() {
+
+    document
+        .getElementById('successModal')
+        .classList
+        .remove('show');
+
+}
+
+</script>
+
+</body>
+
+</html>

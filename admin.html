@@ -1,0 +1,2879 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Alwan Alward | Admin</title>
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8f6f8;
+            color: #292329;
+        }
+
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           LOGIN PAGE
+        ===================================================== */
+
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8f1f6,
+                    #ffffff
+                );
+        }
+
+
+        .login-card {
+            width: 100%;
+            max-width: 400px;
+
+            background: #ffffff;
+
+            padding: 40px 35px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 15px 45px rgba(70, 40, 60, 0.10);
+        }
+
+
+        .login-logo {
+            width: 70px;
+            height: 70px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            background: #f1e4ec;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+        }
+
+
+        .login-card h1 {
+            text-align: center;
+
+            color: #814d68;
+
+            font-size: 26px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .login-subtitle {
+            text-align: center;
+
+            color: #888;
+
+            font-size: 14px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+
+        .form-group label {
+            display: block;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+
+            color: #444;
+        }
+
+
+        .form-group input {
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+
+        .form-group input:focus {
+            border-color: #9a617d;
+
+            box-shadow:
+                0 0 0 3px rgba(154, 97, 125, 0.10);
+        }
+
+
+        .login-button {
+            width: 100%;
+
+            border: none;
+
+            padding: 14px;
+
+            border-radius: 10px;
+
+            background: #814d68;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .login-button:hover {
+            background: #6f4059;
+        }
+
+
+        .login-error {
+            color: #c0392b;
+
+            text-align: center;
+
+            font-size: 13px;
+
+            margin-top: 15px;
+        }
+
+
+        /* =====================================================
+           DASHBOARD
+        ===================================================== */
+
+        #dashboard {
+            display: none;
+
+            min-height: 100vh;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .top-header {
+            background: #ffffff;
+
+            border-bottom: 1px solid #eee;
+
+            padding: 18px 25px;
+        }
+
+
+        .header-inner {
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+
+        .brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .brand-icon {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 12px;
+
+            background: #f1e4ec;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 21px;
+        }
+
+
+        .brand-text h1 {
+            color: #814d68;
+
+            font-size: 21px;
+        }
+
+
+        .brand-text p {
+            color: #999;
+
+            font-size: 12px;
+
+            margin-top: 3px;
+        }
+
+
+        .logout-button {
+            border: none;
+
+            background: #f4f1f3;
+
+            color: #555;
+
+            padding: 10px 17px;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+
+        .logout-button:hover {
+            background: #ebe5e8;
+        }
+
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        .main {
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 30px 20px;
+        }
+
+
+        .welcome {
+            margin-bottom: 25px;
+        }
+
+
+        .welcome h2 {
+            color: #302b30;
+
+            font-size: 25px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .welcome p {
+            color: #888;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           STATISTICS
+        ===================================================== */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .stat-card {
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 22px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            border: 1px solid #eee;
+
+            box-shadow:
+                0 5px 20px rgba(60, 40, 50, 0.05);
+        }
+
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+
+            flex-shrink: 0;
+
+            border-radius: 13px;
+
+            background: #f4e8ef;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 23px;
+        }
+
+
+        .stat-number {
+            color: #814d68;
+
+            font-size: 29px;
+
+            font-weight: bold;
+        }
+
+
+        .stat-title {
+            color: #888;
+
+            font-size: 13px;
+
+            margin-top: 3px;
+        }
+
+
+        .new-stat {
+            border: 1px solid #c99bb1;
+        }
+
+
+        /* =====================================================
+           NEW BOOKING BAR
+        ===================================================== */
+
+        .new-booking-bar {
+            display: none;
+
+            background: white;
+
+            border: 1px solid #e1ccd7;
+
+            border-left: 5px solid #814d68;
+
+            border-radius: 12px;
+
+            padding: 16px 18px;
+
+            margin-bottom: 25px;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+        }
+
+
+        .new-booking-bar.show {
+            display: flex;
+        }
+
+
+        .new-message {
+            color: #814d68;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        .new-actions {
+            display: flex;
+
+            gap: 8px;
+        }
+
+
+        .new-actions button {
+            border: none;
+
+            padding: 9px 14px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        .view-new {
+            background: #814d68;
+
+            color: white;
+        }
+
+
+        .mark-read {
+            background: #eee;
+
+            color: #555;
+        }
+
+
+        /* =====================================================
+           BOOKINGS HEADER
+        ===================================================== */
+
+        .section-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 17px;
+        }
+
+
+        .section-header h2 {
+            font-size: 20px;
+
+            color: #302b30;
+        }
+
+
+        .refresh-button {
+            border: none;
+
+            background: #814d68;
+
+            color: white;
+
+            padding: 10px 16px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+
+        .refresh-button:hover {
+            background: #6f4059;
+        }
+
+
+        /* =====================================================
+           BOOKING CARD
+        ===================================================== */
+
+        .booking {
+            background: white;
+
+            border: 1px solid #eee;
+
+            border-radius: 14px;
+
+            padding: 22px;
+
+            margin-bottom: 15px;
+
+            box-shadow:
+                0 4px 16px rgba(60, 40, 50, 0.04);
+
+            position: relative;
+        }
+
+
+        .booking.new {
+            border-left: 5px solid #814d68;
+        }
+
+
+        .new-label {
+            position: absolute;
+
+            top: 18px;
+
+            right: 18px;
+
+            background: #814d68;
+
+            color: white;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+        }
+
+
+        .customer-name {
+            color: #814d68;
+
+            font-size: 18px;
+
+            margin-bottom: 17px;
+
+            padding-right: 60px;
+        }
+
+
+        .booking-info {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .info-item {
+            background: #faf8f9;
+
+            border-radius: 9px;
+
+            padding: 11px;
+
+            font-size: 13px;
+        }
+
+
+        .info-item strong {
+            display: block;
+
+            color: #777;
+
+            font-size: 11px;
+
+            margin-bottom: 4px;
+
+            text-transform: uppercase;
+        }
+
+
+        .info-item span {
+            color: #333;
+
+            font-weight: 500;
+        }
+
+
+        .booking-note {
+            background: #faf8f9;
+
+            border-radius: 9px;
+
+            padding: 12px;
+
+            margin-top: 10px;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        .booking-note strong {
+            color: #814d68;
+        }
+
+
+        .booking-created {
+            color: #aaa;
+
+            font-size: 11px;
+
+            margin-top: 13px;
+        }
+
+
+        /* =====================================================
+           BOOKING ACTIONS
+        ===================================================== */
+
+        .booking-actions {
+            display: flex;
+
+            gap: 9px;
+
+            margin-top: 17px;
+        }
+
+
+        .confirm-button,
+        .reject-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-decoration: none;
+
+            border: none;
+
+            border-radius: 9px;
+
+            padding: 11px 16px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .confirm-button {
+            background: #25D366;
+
+            color: white;
+        }
+
+
+        .reject-button {
+            background: #d9534f;
+
+            color: white;
+        }
+
+
+        .confirm-button:hover,
+        .reject-button:hover {
+            opacity: 0.85;
+        }
+
+
+        /* =====================================================
+           EMPTY
+        ===================================================== */
+
+        .empty {
+            background: white;
+
+            border: 1px solid #eee;
+
+            border-radius: 14px;
+
+            padding: 50px 20px;
+
+            text-align: center;
+
+            color: #888;
+        }
+
+
+        .empty-icon {
+            font-size: 40px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .empty h3 {
+            color: #555;
+
+            margin-bottom: 6px;
+        }
+
+
+        /* =====================================================
+           NOTIFICATION
+        ===================================================== */
+
+        #notification {
+            display: none;
+
+            position: fixed;
+
+            right: 20px;
+
+            top: 20px;
+
+            width: 350px;
+
+            max-width: calc(100% - 40px);
+
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 15px 45px rgba(0, 0, 0, 0.20);
+
+            border-left: 5px solid #814d68;
+
+            z-index: 9999;
+
+            animation:
+                notificationIn 0.3s ease;
+        }
+
+
+        @keyframes notificationIn {
+
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+        }
+
+
+        .notification-close {
+            position: absolute;
+
+            top: 8px;
+
+            right: 10px;
+
+            border: none;
+
+            background: transparent;
+
+            font-size: 22px;
+
+            color: #888;
+
+            cursor: pointer;
+        }
+
+
+        #notification h3 {
+            color: #814d68;
+
+            font-size: 18px;
+
+            margin-bottom: 15px;
+        }
+
+
+        #notificationContent {
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            color: #444;
+        }
+
+
+        .notification-actions {
+            display: flex;
+
+            gap: 8px;
+
+            margin-top: 17px;
+        }
+
+
+        .notification-actions button {
+            flex: 1;
+
+            border: none;
+
+            padding: 10px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            font-size: 12px;
+        }
+
+
+        .notification-view {
+            background: #814d68;
+
+            color: white;
+        }
+
+
+        .notification-seen {
+            background: #eee;
+
+            color: #555;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 750px) {
+
+            .top-header {
+                padding: 15px;
+            }
+
+
+            .header-inner {
+                gap: 10px;
+            }
+
+
+            .brand-text h1 {
+                font-size: 18px;
+            }
+
+
+            .brand-text p {
+                display: none;
+            }
+
+
+            .logout-button {
+                padding: 9px 12px;
+
+                font-size: 12px;
+            }
+
+
+            .main {
+                padding: 22px 15px;
+            }
+
+
+            .welcome h2 {
+                font-size: 21px;
+            }
+
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+
+            .new-booking-bar {
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+
+            .new-actions {
+                flex-direction: column;
+            }
+
+
+            .new-actions button {
+                width: 100%;
+            }
+
+
+            .section-header {
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 10px;
+            }
+
+
+            .refresh-button {
+                width: 100%;
+            }
+
+
+            .booking-info {
+                grid-template-columns: 1fr;
+            }
+
+
+            .booking-actions {
+                flex-direction: column;
+            }
+
+
+            .confirm-button,
+            .reject-button {
+                width: 100%;
+            }
+
+
+            #notification {
+                left: 15px;
+
+                right: 15px;
+
+                top: 15px;
+
+                width: auto;
+
+                max-width: none;
+            }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<div class="login-page" id="loginBox">
+
+    <div class="login-card">
+
+        <div class="login-logo">
+            💇‍♀️
+        </div>
+
+        <h1>
+            Alwan Alward
+        </h1>
+
+        <p class="login-subtitle">
+            Salon Administration
+        </p>
+
+
+        <div class="form-group">
+
+            <label for="email">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Admin email"
+                autocomplete="username"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="password">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                autocomplete="current-password"
+            >
+
+        </div>
+
+
+        <button
+            class="login-button"
+            onclick="login()"
+        >
+            Login
+        </button>
+
+
+        <div id="loginMessage"></div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<div id="dashboard">
+
+
+    <!-- HEADER -->
+
+    <header class="top-header">
+
+        <div class="header-inner">
+
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    ✿
+                </div>
+
+                <div class="brand-text">
+
+                    <h1>
+                        Alwan Alward
+                    </h1>
+
+                    <p>
+                        Appointment Management
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="logout-button"
+                onclick="logout()"
+            >
+                Logout
+            </button>
+
+
+        </div>
+
+    </header>
+
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+
+        <!-- WELCOME -->
+
+        <div class="welcome">
+
+            <h2>
+                Dashboard
+            </h2>
+
+            <p>
+                Manage your salon appointment requests.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <div class="stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📋
+                </div>
+
+                <div>
+
+                    <div
+                        class="stat-number"
+                        id="totalBookings"
+                    >
+                        0
+                    </div>
+
+                    <div class="stat-title">
+                        Total Bookings
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📅
+                </div>
+
+                <div>
+
+                    <div
+                        class="stat-number"
+                        id="todayBookings"
+                    >
+                        0
+                    </div>
+
+                    <div class="stat-title">
+                        Today's Bookings
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card new-stat">
+
+                <div class="stat-icon">
+                    🔔
+                </div>
+
+                <div>
+
+                    <div
+                        class="stat-number"
+                        id="newBookings"
+                    >
+                        0
+                    </div>
+
+                    <div class="stat-title">
+                        New Bookings
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             NEW BOOKING BAR
+        ================================================== -->
+
+        <div
+            class="new-booking-bar"
+            id="newBookingsActions"
+        >
+
+            <div class="new-message">
+
+                🔔
+                <span id="newBookingsMessage">
+                    You have new appointment requests.
+                </span>
+
+            </div>
+
+
+            <div class="new-actions">
+
+                <button
+                    class="view-new"
+                    onclick="viewNewBookings()"
+                >
+                    View New
+                </button>
+
+
+                <button
+                    class="mark-read"
+                    onclick="markAllSeen()"
+                >
+                    Mark All as Read
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             BOOKINGS
+        ================================================== -->
+
+        <div class="section-header">
+
+            <h2>
+                Appointment Requests
+            </h2>
+
+
+            <button
+                class="refresh-button"
+                onclick="manualRefresh()"
+            >
+                ↻ Refresh
+            </button>
+
+        </div>
+
+
+        <div id="bookings">
+
+            Loading bookings...
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     NOTIFICATION
+===================================================== -->
+
+<div id="notification">
+
+    <button
+        class="notification-close"
+        onclick="closeNotification()"
+    >
+        ×
+    </button>
+
+
+    <h3>
+        🔔 New Appointment
+    </h3>
+
+
+    <div id="notificationContent"></div>
+
+
+    <div class="notification-actions">
+
+        <button
+            class="notification-view"
+            onclick="viewNewBookings()"
+        >
+            View Appointment
+        </button>
+
+
+        <button
+            class="notification-seen"
+            onclick="markAllSeen()"
+        >
+            Mark as Seen
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================================
+   SUPABASE CONFIGURATION
+===================================================== */
+
+const SUPABASE_URL =
+    "https://fzvafnmtxsyftumhwptj.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_YKbRYshLW19oh7LlUKiVSQ_onviKmTs";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+
+/* =====================================================
+   GLOBAL VARIABLES
+===================================================== */
+
+let allBookings = [];
+
+let knownBookingIds = new Set();
+
+let newBookingIds = new Set();
+
+let pollingTimer = null;
+
+let firstLoad = true;
+
+
+
+const STORAGE_KEY =
+    "alwan_alward_seen_bookings";
+
+
+
+/* =====================================================
+   GET SEEN BOOKINGS
+===================================================== */
+
+function getSeenBookingIds() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(STORAGE_KEY);
+
+
+        if (!saved) {
+
+            return new Set();
+
+        }
+
+
+        return new Set(
+            JSON.parse(saved)
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Could not read saved bookings:",
+            error
+        );
+
+        return new Set();
+
+    }
+
+}
+
+
+
+/* =====================================================
+   SAVE SEEN BOOKINGS
+===================================================== */
+
+function saveSeenBookingIds(ids) {
+
+    try {
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(
+                Array.from(ids)
+            )
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Could not save bookings:",
+            error
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   BOOKING ID
+===================================================== */
+
+function getBookingId(booking) {
+
+    if (
+        booking.id !== undefined &&
+        booking.id !== null
+    ) {
+
+        return String(booking.id);
+
+    }
+
+
+    return [
+
+        booking.created_at || "",
+
+        booking.name || "",
+
+        booking.phone || "",
+
+        booking.date || "",
+
+        booking.time || ""
+
+    ].join("|");
+
+}
+
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+}
+
+
+
+/* =====================================================
+   FORMAT TIME
+===================================================== */
+
+function formatTime(time) {
+
+    if (!time) {
+
+        return "-";
+
+    }
+
+
+    const parts =
+        String(time).split(":");
+
+
+    if (parts.length < 2) {
+
+        return time;
+
+    }
+
+
+    let hour =
+        parseInt(parts[0], 10);
+
+
+    const minute =
+        parts[1];
+
+
+    if (isNaN(hour)) {
+
+        return time;
+
+    }
+
+
+    const ampm =
+        hour >= 12
+            ? "PM"
+            : "AM";
+
+
+    hour =
+        hour % 12 || 12;
+
+
+    return `${hour}:${minute} ${ampm}`;
+
+}
+
+
+
+/* =====================================================
+   FORMAT CREATED DATE
+===================================================== */
+
+function formatCreatedDate(createdAt) {
+
+    if (!createdAt) {
+
+        return "";
+
+    }
+
+
+    try {
+
+        return new Date(createdAt)
+            .toLocaleString(
+                "en-AE",
+                {
+                    timeZone: "Asia/Dubai"
+                }
+            );
+
+    }
+
+    catch {
+
+        return createdAt;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+async function login() {
+
+    const email =
+        document
+            .getElementById("email")
+            .value
+            .trim();
+
+
+    const password =
+        document
+            .getElementById("password")
+            .value;
+
+
+    const message =
+        document.getElementById(
+            "loginMessage"
+        );
+
+
+    if (!email || !password) {
+
+        message.className =
+            "login-error";
+
+        message.innerText =
+            "Please enter email and password.";
+
+        return;
+
+    }
+
+
+    message.className = "";
+
+    message.innerText =
+        "Logging in...";
+
+
+    const {
+        error
+    } =
+        await supabaseClient.auth
+            .signInWithPassword({
+
+                email: email,
+
+                password: password
+
+            });
+
+
+    if (error) {
+
+        message.className =
+            "login-error";
+
+        message.innerText =
+            error.message;
+
+        return;
+
+    }
+
+
+    message.innerText = "";
+
+
+    showDashboard();
+
+
+    await loadBookings();
+
+
+    startPolling();
+
+}
+
+
+
+/* =====================================================
+   SHOW DASHBOARD
+===================================================== */
+
+function showDashboard() {
+
+    document.getElementById(
+        "loginBox"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "dashboard"
+    ).style.display = "block";
+
+}
+
+
+
+/* =====================================================
+   LOAD BOOKINGS
+===================================================== */
+
+async function loadBookings() {
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("alwan alward")
+            .select("*")
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+
+
+    if (error) {
+
+        console.error(error);
+
+
+        document.getElementById(
+            "bookings"
+        ).innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    ⚠️
+                </div>
+
+                <h3>
+                    Could not load bookings
+                </h3>
+
+                <p>
+                    ${escapeHTML(error.message)}
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    allBookings =
+        data || [];
+
+
+    processNewBookings();
+
+    updateStatistics();
+
+    renderBookings();
+
+}
+
+
+
+/* =====================================================
+   UPDATE STATISTICS
+===================================================== */
+
+function updateStatistics() {
+
+
+    /* TOTAL */
+
+    document.getElementById(
+        "totalBookings"
+    ).innerText =
+        allBookings.length;
+
+
+
+    /* UAE TODAY */
+
+    const now =
+        new Date();
+
+
+    const parts =
+        new Intl.DateTimeFormat(
+            "en-CA",
+            {
+                timeZone: "Asia/Dubai",
+
+                year: "numeric",
+
+                month: "2-digit",
+
+                day: "2-digit"
+            }
+        ).formatToParts(now);
+
+
+    const year =
+        parts.find(
+            p => p.type === "year"
+        ).value;
+
+
+    const month =
+        parts.find(
+            p => p.type === "month"
+        ).value;
+
+
+    const day =
+        parts.find(
+            p => p.type === "day"
+        ).value;
+
+
+    const today =
+        `${year}-${month}-${day}`;
+
+
+
+    /* TODAY COUNT */
+
+    const todayCount =
+        allBookings.filter(
+            booking => {
+
+                if (!booking.date) {
+
+                    return false;
+
+                }
+
+
+                let date =
+                    String(
+                        booking.date
+                    ).trim();
+
+
+                if (
+                    /^\d{4}-\d{2}-\d{2}$/
+                        .test(date)
+                ) {
+
+                    return date === today;
+
+                }
+
+
+                if (
+                    /^\d{4}-\d{2}-\d{2}/
+                        .test(date)
+                ) {
+
+                    return (
+                        date.substring(0, 10)
+                        === today
+                    );
+
+                }
+
+
+                if (
+                    /^\d{2}\/\d{2}\/\d{4}$/
+                        .test(date)
+                ) {
+
+                    const p =
+                        date.split("/");
+
+
+                    return (
+                        `${p[2]}-${p[1]}-${p[0]}`
+                        === today
+                    );
+
+                }
+
+
+                if (
+                    /^\d{2}-\d{2}-\d{4}$/
+                        .test(date)
+                ) {
+
+                    const p =
+                        date.split("-");
+
+
+                    return (
+                        `${p[2]}-${p[1]}-${p[0]}`
+                        === today
+                    );
+
+                }
+
+
+                return false;
+
+            }
+        ).length;
+
+
+    document.getElementById(
+        "todayBookings"
+    ).innerText =
+        todayCount;
+
+
+
+    /* NEW */
+
+    document.getElementById(
+        "newBookings"
+    ).innerText =
+        newBookingIds.size;
+
+
+    updateNewBookingsActionBar();
+
+}
+
+
+
+/* =====================================================
+   NEW BOOKING BAR
+===================================================== */
+
+function updateNewBookingsActionBar() {
+
+    const bar =
+        document.getElementById(
+            "newBookingsActions"
+        );
+
+
+    const message =
+        document.getElementById(
+            "newBookingsMessage"
+        );
+
+
+    const count =
+        newBookingIds.size;
+
+
+    if (count > 0) {
+
+        bar.classList.add("show");
+
+
+        if (count === 1) {
+
+            message.innerText =
+                "You have 1 new appointment request.";
+
+        }
+
+        else {
+
+            message.innerText =
+                `You have ${count} new appointment requests.`;
+
+        }
+
+    }
+
+    else {
+
+        bar.classList.remove("show");
+
+    }
+
+}
+
+
+
+/* =====================================================
+   PROCESS NEW BOOKINGS
+===================================================== */
+
+function processNewBookings() {
+
+    const savedSeen =
+        getSeenBookingIds();
+
+
+
+    /* FIRST LOAD */
+
+    if (firstLoad) {
+
+
+        /*
+           Keep the newest booking as NEW
+           when there are no saved records.
+        */
+
+        if (
+            savedSeen.size === 0 &&
+            allBookings.length > 0
+        ) {
+
+            allBookings.forEach(
+                (booking, index) => {
+
+                    const id =
+                        getBookingId(
+                            booking
+                        );
+
+
+                    if (index > 0) {
+
+                        savedSeen.add(id);
+
+                    }
+
+                }
+            );
+
+
+            saveSeenBookingIds(
+                savedSeen
+            );
+
+        }
+
+
+
+        allBookings.forEach(
+            booking => {
+
+                const id =
+                    getBookingId(
+                        booking
+                    );
+
+
+                knownBookingIds.add(id);
+
+
+                if (!savedSeen.has(id)) {
+
+                    newBookingIds.add(id);
+
+                }
+
+            }
+        );
+
+
+        firstLoad = false;
+
+
+        if (newBookingIds.size > 0) {
+
+            showLatestNotification();
+
+        }
+
+
+        return;
+
+    }
+
+
+
+    /* NORMAL POLLING */
+
+    let newestBooking = null;
+
+
+    allBookings.forEach(
+        booking => {
+
+            const id =
+                getBookingId(
+                    booking
+                );
+
+
+            if (
+                !knownBookingIds.has(id)
+            ) {
+
+                knownBookingIds.add(id);
+
+
+                if (!savedSeen.has(id)) {
+
+                    newBookingIds.add(id);
+
+                    newestBooking =
+                        booking;
+
+                }
+
+            }
+
+        }
+    );
+
+
+
+    if (newestBooking) {
+
+        showNotification(
+            newestBooking
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   SHOW LATEST NOTIFICATION
+===================================================== */
+
+function showLatestNotification() {
+
+    const newBookings =
+        allBookings.filter(
+            booking =>
+                newBookingIds.has(
+                    getBookingId(
+                        booking
+                    )
+                )
+        );
+
+
+    if (
+        newBookings.length === 0
+    ) {
+
+        return;
+
+    }
+
+
+    showNotification(
+        newBookings[0]
+    );
+
+}
+
+
+
+/* =====================================================
+   SHOW NOTIFICATION
+===================================================== */
+
+function showNotification(booking) {
+
+    const notification =
+        document.getElementById(
+            "notification"
+        );
+
+
+    const content =
+        document.getElementById(
+            "notificationContent"
+        );
+
+
+    const count =
+        newBookingIds.size;
+
+
+    const extra =
+        count > 1
+            ? `<br><strong>${count}</strong> new appointments waiting.`
+            : "";
+
+
+    content.innerHTML = `
+
+        <strong>
+            ${escapeHTML(
+                booking.name ||
+                "A customer"
+            )}
+        </strong>
+
+        has requested an appointment.
+
+        <br><br>
+
+        📅
+        <strong>
+            Date:
+        </strong>
+        ${escapeHTML(
+            booking.date || "-"
+        )}
+
+        <br>
+
+        ⏰
+        <strong>
+            Time:
+        </strong>
+        ${formatTime(
+            booking.time || "-"
+        )}
+
+        <br>
+
+        💇‍♀️
+        <strong>
+            Service:
+        </strong>
+        ${escapeHTML(
+            booking.service || "-"
+        )}
+
+        ${extra}
+
+    `;
+
+
+    notification.style.display =
+        "block";
+
+}
+
+
+
+/* =====================================================
+   CLOSE NOTIFICATION
+===================================================== */
+
+function closeNotification() {
+
+    document.getElementById(
+        "notification"
+    ).style.display =
+        "none";
+
+}
+
+
+
+/* =====================================================
+   MARK ALL SEEN
+===================================================== */
+
+function markAllSeen() {
+
+    const savedSeen =
+        getSeenBookingIds();
+
+
+    newBookingIds.forEach(
+        id => {
+
+            savedSeen.add(id);
+
+        }
+    );
+
+
+    saveSeenBookingIds(
+        savedSeen
+    );
+
+
+    newBookingIds.clear();
+
+
+    updateStatistics();
+
+    closeNotification();
+
+    renderBookings();
+
+}
+
+
+
+/* =====================================================
+   VIEW NEW
+===================================================== */
+
+function viewNewBookings() {
+
+    closeNotification();
+
+
+    const firstNew =
+        document.querySelector(
+            ".booking.new"
+        );
+
+
+    if (firstNew) {
+
+        firstNew.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "center"
+
+        });
+
+    }
+
+}
+
+
+
+/* =====================================================
+   RENDER BOOKINGS
+===================================================== */
+
+function renderBookings() {
+
+    const container =
+        document.getElementById(
+            "bookings"
+        );
+
+
+    if (
+        !allBookings ||
+        allBookings.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    📅
+                </div>
+
+                <h3>
+                    No appointments yet
+                </h3>
+
+                <p>
+                    New customer bookings will appear here.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+
+    allBookings.forEach(
+        booking => {
+
+
+            const id =
+                getBookingId(
+                    booking
+                );
+
+
+            const isNew =
+                newBookingIds.has(id);
+
+
+
+            /* PHONE */
+
+            let customerPhone =
+                String(
+                    booking.phone || ""
+                ).replace(
+                    /\D/g,
+                    ""
+                );
+
+
+            if (
+                customerPhone.startsWith("0") &&
+                customerPhone.length === 10
+            ) {
+
+                customerPhone =
+                    "971" +
+                    customerPhone.substring(1);
+
+            }
+
+
+
+            /* WHATSAPP */
+
+            const confirmMessage =
+                `✅ Your appointment has been confirmed! Thank you for choosing Alwan Alward Ladies Salon. 💜 We look forward to seeing you. ✨`;
+
+
+            const rejectMessage =
+                `We are sorry, but your appointment request could not be confirmed at this time. 💜 Please contact Alwan Alward Ladies Salon on WhatsApp to choose another available time. Thank you for understanding. ✨`;
+
+
+            const confirmURL =
+                customerPhone
+                    ? "https://wa.me/" +
+                      customerPhone +
+                      "?text=" +
+                      encodeURIComponent(
+                          confirmMessage
+                      )
+                    : "#";
+
+
+            const rejectURL =
+                customerPhone
+                    ? "https://wa.me/" +
+                      customerPhone +
+                      "?text=" +
+                      encodeURIComponent(
+                          rejectMessage
+                      )
+                    : "#";
+
+
+
+            /* CARD */
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "booking" +
+                (
+                    isNew
+                        ? " new"
+                        : ""
+                );
+
+
+
+            card.innerHTML = `
+
+                ${
+                    isNew
+                        ? `
+                            <div class="new-label">
+                                NEW
+                            </div>
+                          `
+                        : ""
+                }
+
+
+                <h3 class="customer-name">
+
+                    💇‍♀️
+
+                    ${escapeHTML(
+                        booking.name ||
+                        "Customer"
+                    )}
+
+                </h3>
+
+
+                <div class="booking-info">
+
+
+                    <div class="info-item">
+
+                        <strong>
+                            Phone
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                booking.phone ||
+                                "-"
+                            )}
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="info-item">
+
+                        <strong>
+                            Service
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                booking.service ||
+                                "-"
+                            )}
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="info-item">
+
+                        <strong>
+                            Date
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                booking.date ||
+                                "-"
+                            )}
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="info-item">
+
+                        <strong>
+                            Time
+                        </strong>
+
+                        <span>
+                            ${formatTime(
+                                booking.time ||
+                                "-"
+                            )}
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="booking-note">
+
+                    <strong>
+                        💬 Additional Note
+                    </strong>
+
+                    <br>
+
+                    ${
+                        booking.note
+                            ? escapeHTML(
+                                booking.note
+                              )
+                            : "No additional note"
+                    }
+
+                </div>
+
+
+
+                <div class="booking-created">
+
+                    Booking received:
+
+                    ${formatCreatedDate(
+                        booking.created_at
+                    )}
+
+                </div>
+
+
+
+                <div class="booking-actions">
+
+
+                    <a
+                        href="${confirmURL}"
+
+                        ${
+                            customerPhone
+                                ? `
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  `
+                                : ""
+                        }
+
+                        class="confirm-button"
+
+                        ${
+                            !customerPhone
+                                ? `onclick="return false;"`
+                                : ""
+                        }
+                    >
+
+                        💬 Confirm Booking
+
+                    </a>
+
+
+
+                    <a
+                        href="${rejectURL}"
+
+                        ${
+                            customerPhone
+                                ? `
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  `
+                                : ""
+                        }
+
+                        class="reject-button"
+
+                        ${
+                            !customerPhone
+                                ? `onclick="return false;"`
+                                : ""
+                        }
+                    >
+
+                        ✕ Reject Booking
+
+                    </a>
+
+
+                </div>
+
+
+
+                ${
+                    !customerPhone
+                        ? `
+                            <p
+                                style="
+                                    color:#c0392b;
+                                    font-size:12px;
+                                    margin-top:10px;
+                                "
+                            >
+                                ⚠️ No valid customer phone number.
+                            </p>
+                          `
+                        : ""
+                }
+
+            `;
+
+
+            container.appendChild(card);
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   POLLING
+===================================================== */
+
+function startPolling() {
+
+    if (pollingTimer) {
+
+        clearInterval(
+            pollingTimer
+        );
+
+    }
+
+
+    pollingTimer =
+        setInterval(
+            async function() {
+
+                await loadBookings();
+
+            },
+            5000
+        );
+
+}
+
+
+
+/* =====================================================
+   MANUAL REFRESH
+===================================================== */
+
+async function manualRefresh() {
+
+    const button =
+        document.querySelector(
+            ".refresh-button"
+        );
+
+
+    const oldText =
+        button.innerText;
+
+
+    button.innerText =
+        "Loading...";
+
+
+    button.disabled = true;
+
+
+    await loadBookings();
+
+
+    button.innerText =
+        oldText;
+
+
+    button.disabled = false;
+
+}
+
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function logout() {
+
+    if (pollingTimer) {
+
+        clearInterval(
+            pollingTimer
+        );
+
+        pollingTimer = null;
+
+    }
+
+
+    await supabaseClient.auth
+        .signOut();
+
+
+    document.getElementById(
+        "dashboard"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "loginBox"
+    ).style.display =
+        "flex";
+
+
+    document.getElementById(
+        "password"
+    ).value = "";
+
+}
+
+
+
+/* =====================================================
+   CHECK LOGIN
+===================================================== */
+
+async function checkLogin() {
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth
+            .getSession();
+
+
+    if (error) {
+
+        console.error(error);
+
+        return;
+
+    }
+
+
+    if (data.session) {
+
+        showDashboard();
+
+        await loadBookings();
+
+        startPolling();
+
+    }
+
+}
+
+
+
+/* =====================================================
+   ENTER KEY LOGIN
+===================================================== */
+
+document
+    .getElementById("password")
+    .addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                login();
+
+            }
+
+        }
+    );
+
+
+
+/* =====================================================
+   START
+===================================================== */
+
+checkLogin();
+
+
+</script>
+
+
+</body>
+
+</html>
+
