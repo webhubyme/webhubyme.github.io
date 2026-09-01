@@ -10039,6 +10039,152 @@ a {
         transform: translateY(0) scale(1);
     }
 }
+/* =====================================================
+   SMALL WEBHUB FOOTER
+===================================================== */
+
+.webhub-footer {
+    margin-top: 45px;
+    padding: 18px 20px;
+    text-align: center;
+    background: #241b24;
+    color: white;
+}
+
+/* WEBHUB NAME */
+
+.webhub-logo {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+}
+
+.webhub-logo span {
+    color: #d9a6c1;
+}
+
+/* TAGLINE */
+
+.webhub-tagline {
+    margin: 0 0 8px;
+    color: #cfc3cb;
+    font-size: 11px;
+}
+
+/* CREDIT */
+
+.webhub-credit {
+    margin: 0 0 4px;
+    font-size: 11px;
+    color: #eee;
+}
+
+.webhub-credit strong {
+    color: #d9a6c1;
+}
+
+/* SERVICES */
+
+.webhub-services {
+    margin: 0;
+    color: #999;
+    font-size: 10px;
+}
+
+/* COPYRIGHT */
+
+.webhub-copyright {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #777;
+    font-size: 9px;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .webhub-footer {
+        padding: 15px 12px;
+        margin-top: 35px;
+    }
+
+    .webhub-logo {
+        font-size: 18px;
+    }
+
+    .webhub-tagline {
+        font-size: 10px;
+    }
+
+    .webhub-credit {
+        font-size: 10px;
+    }
+
+    .webhub-services {
+        font-size: 9px;
+    }
+
+    .webhub-copyright {
+        font-size: 8px;
+    }
+}
+/* =====================================================
+   WEBHUB DEMO BADGE
+===================================================== */
+
+.webhub-demo-badge {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 99999;
+
+    padding: 7px 12px;
+
+    background: rgba(36, 27, 36, 0.92);
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.webhub-demo-badge::before {
+    content: "●";
+    color: #d9a6c1;
+    margin-right: 5px;
+}
+
+@media (max-width: 600px) {
+
+    .webhub-demo-badge {
+        top: 10px;
+        right: 10px;
+        padding: 6px 9px;
+        font-size: 9px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
