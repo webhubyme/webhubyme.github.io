@@ -10172,7 +10172,167 @@ a {
         font-size: 9px;
     }
 }
+/* =====================================================
+   WEBHUB PROFESSIONAL FOOTER
+===================================================== */
 
+.webhub-footer {
+    background: #2d1b2f;
+    color: white;
+    padding: 45px 20px 25px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.webhub-footer-content {
+    max-width: 700px;
+    margin: auto;
+}
+
+.webhub-brand h2 {
+    margin: 0 0 8px;
+    font-size: 30px;
+    letter-spacing: 2px;
+    color: #f3d5e5;
+}
+
+.webhub-brand p {
+    margin: 0;
+    color: #ddd;
+    font-size: 14px;
+}
+
+.webhub-divider {
+    width: 60px;
+    height: 2px;
+    background: #c98aaa;
+    margin: 25px auto;
+}
+
+.webhub-credit {
+    margin: 0;
+    font-size: 15px;
+    color: #ddd;
+}
+
+.webhub-credit strong {
+    color: #f3d5e5;
+}
+
+.webhub-description {
+    margin: 10px 0;
+    font-size: 13px;
+    color: #bbb;
+}
+
+.webhub-copyright {
+    margin: 25px 0 0;
+    font-size: 12px;
+    color: #999;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .webhub-footer {
+        padding: 35px 15px 22px;
+    }
+
+    .webhub-brand h2 {
+        font-size: 26px;
+    }
+
+    .webhub-credit {
+        font-size: 14px;
+    }
+
+}
+/* =====================================================
+   WEBHUB PROFESSIONAL DEVELOPER CREDIT
+===================================================== */
+
+.webhub-footer {
+    background: #241b22;
+    color: #ffffff;
+    padding: 28px 20px;
+    text-align: center;
+}
+
+.webhub-footer-content {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.webhub-brand h2 {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.webhub-brand p {
+    margin: 6px 0 18px;
+    color: #d8cbd2;
+    font-size: 13px;
+}
+
+.webhub-divider {
+    width: 45px;
+    height: 1px;
+    background: #c9a7b8;
+    margin: 0 auto 18px;
+}
+
+.webhub-credit {
+    margin: 0;
+    font-size: 13px;
+    color: #eee;
+}
+
+.webhub-credit strong {
+    color: #d8b5c7;
+    font-weight: 600;
+}
+
+.webhub-description {
+    margin: 7px 0;
+    font-size: 12px;
+    color: #b9adb4;
+}
+
+.webhub-copyright {
+    margin-top: 12px;
+    font-size: 11px;
+    color: #8f838a;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .webhub-footer {
+        padding: 24px 15px;
+    }
+
+    .webhub-brand h2 {
+        font-size: 21px;
+    }
+
+    .webhub-credit {
+        font-size: 12px;
+    }
+
+    .webhub-description {
+        font-size: 11px;
+    }
+
+}
 
 
 
